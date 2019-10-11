@@ -12,10 +12,12 @@ def merge(part_1, part_2):
     i, j, k = 0, 0, 0
     len_1 = len(part_1)
     len_2 = len(part_2)
-    res_len = len_1 + len_2
-    result = np.zeros((res_len))
+    result = list(np.zeros((len_1 + len_2)))
+    big_num = 9223372036854775807
+    part_1.append(big_num)
+    part_2.append(big_num)
 
-    while (i < len_1) & (j < len_2):
+    while (i < len_1) | (j < len_2):
         if (part_1[i] < part_2[j]):
             result[k] = part_1[i]
             k = k + 1
@@ -39,7 +41,7 @@ def merge_sort(array):
 if __name__ == "__main__":
     print('investigating merge sort')
 
-    unsorted_arr = random.sample(range(1000), k = 50)
+    unsorted_arr = list(random.sample(range(1000), k = 50))
     print('\nunsorted_arr = ', unsorted_arr)
     sorted_arr = merge_sort(unsorted_arr)
     print('\nsorted_arr = ', sorted_arr)
